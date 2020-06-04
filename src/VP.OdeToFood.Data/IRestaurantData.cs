@@ -6,5 +6,6 @@ namespace VP.OdeToFood.Data
     public interface IRestaurantData
     {
         IEnumerable<Restaurant> GetAllRestaurants();
+        IEnumerable<Restaurant> GetRestaurantsByName(string nameQuery);
     }
 }

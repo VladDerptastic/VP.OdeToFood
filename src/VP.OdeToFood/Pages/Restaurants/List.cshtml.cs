@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace VP.OdeToFood.Pages.Restaurants
         public IEnumerable<Restaurant> Restaurants { get; set; }
         #endregion
 
+        #region BoundProperties
+        [BindProperty(SupportsGet = true)]
+        public string SearchQuery { get; set; }
+        #endregion
+
         public ListModel(ILogger<ListModel> logger, IConfiguration config, IRestaurantData restaurantData)
         {
             _logger = logger;
@@ -29,8 +35,13 @@ namespace VP.OdeToFood.Pages.Restaurants
 
         public void OnGet()
         {
+            //var query = HttpContext.Request.Query["searchQuery"];
             Message = _config["Message"];
-            Restaurants = _restaurantData.GetAllRestaurants();
+
+            if (string.IsNullOrEmpty(SearchQuery) == false)
+                Restaurants = _restaurantData.GetRestaurantsByName(SearchQuery);
+            else
+                Restaurants = _restaurantData.GetAllRestaurants();
         }
     }
 }
