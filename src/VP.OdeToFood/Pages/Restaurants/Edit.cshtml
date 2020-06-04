@@ -19,11 +19,21 @@
     </div>
     <div class="form-group">
         <label asp-for="Restaurant.Cuisine"></label>
-        <input asp-for="Restaurant.Cuisine" />
+        <select class="form-control" asp-for="Restaurant.Cuisine" asp-items="@Model.Cuisines"></select>
     </div>
-    <button class="btn btn-success" type="submit">
-        <i class="fas fa-save"></i>
-        Save
-    </button>
+    <div class="input-group-append">
+        <button class="btn btn-success" type="submit">
+            <i class="fas fa-save"></i>
+            Save
+        </button>
+        <button class="btn btn-warning" type="reset">
+            <i class="fas fa-window-close"></i>
+            Cancel
+        </button>
+        <button class="btn btn-danger" type="button">
+            <i class="fas fa-trash-alt"></i>
+            Delete
+        </button>
+    </div>
 </form>
 

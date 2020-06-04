@@ -16,6 +16,9 @@ namespace VP.OdeToFood.Data.Mock
                 new Restaurant(){ Id = 5, Location = "Berlin", Name = "Sou Sushi",  Cuisine = CuisineType.Japanise},
             };
 
+        public int Commit()
+            => 0;
+
         public IEnumerable<Restaurant> GetAllRestaurants() 
             => Restaurants.OrderBy(x => x.Cuisine);
 
@@ -24,5 +27,17 @@ namespace VP.OdeToFood.Data.Mock
 
         public IEnumerable<Restaurant> GetRestaurantsByName(string nameQuery) 
             => Restaurants.Where(x => x.Name.ToLower().Contains(nameQuery.ToLower())).OrderBy(x => x.Name);
+
+        public Restaurant UpdateRestaurant(Restaurant updatedObject)
+        {
+            var restaurant = Restaurants.SingleOrDefault(x => x.Id == updatedObject.Id);
+            if (restaurant != null)
+            {
+                restaurant.Name = updatedObject.Name;
+                restaurant.Location = updatedObject.Location;
+                restaurant.Cuisine = updatedObject.Cuisine;
+            }
+            return restaurant;
+        }
     }
 }

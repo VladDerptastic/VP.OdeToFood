@@ -21,7 +21,7 @@ namespace VP.OdeToFood.Pages.Restaurants
         public IEnumerable<Restaurant> Restaurants { get; set; }
         #endregion
 
-        #region BoundProperties
+        #region Bound Properties
         [BindProperty(SupportsGet = true)]
         public string SearchQuery { get; set; }
         #endregion
