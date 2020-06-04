@@ -26,7 +26,7 @@
         <th>Name</th>
         <th>Location</th>
         <th>Cuisine</th>
-        <th>Details</th>
+        <th></th>
     </tr>
     @foreach (var restaurant in Model.Restaurants)
     {
@@ -38,6 +38,9 @@
                 <a class="btn btn-lg" asp-page="./Details" asp-route-restaurantId="@restaurant.Id">
                     @*<a class="btn btn-lg" href="/Restaurants/Details?restaurantId=@restaurant.Id">*@
                     <i class="fas fa-info-circle"></i>
+                </a>
+                <a class="btn btn-lg" asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
+                    <i class="fas fa-edit"></i>
                 </a>
             </td>
         </tr>
