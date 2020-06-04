@@ -7,5 +7,6 @@ namespace VP.OdeToFood.Data
     {
         IEnumerable<Restaurant> GetAllRestaurants();
         IEnumerable<Restaurant> GetRestaurantsByName(string nameQuery);
+        Restaurant GetRestaurantById(int id);
     }
 }

@@ -1,0 +1,14 @@
+﻿@page
+@{
+    ViewData["Title"] = "NotFound";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Whoops!</h1>
+<h1>This restaurant was not found!</h1>
+<h5 style="color: grey">Perhaps it was removed from the list.</h5>
+<a asp-page="./List" class="btn btn-primary">
+    Go back to all!
+    <i class="far fa-arrow-alt-circle-left"></i>
+</a>
+

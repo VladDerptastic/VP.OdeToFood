@@ -16,10 +16,13 @@ namespace VP.OdeToFood.Data.Mock
                 new Restaurant(){ Id = 5, Location = "Berlin", Name = "Sou Sushi",  Cuisine = CuisineType.Japanise},
             };
 
-        public IEnumerable<Restaurant> GetAllRestaurants()
+        public IEnumerable<Restaurant> GetAllRestaurants() 
             => Restaurants.OrderBy(x => x.Cuisine);
 
-        public IEnumerable<Restaurant> GetRestaurantsByName(string nameQuery)
+        public Restaurant GetRestaurantById(int id) 
+            => Restaurants.SingleOrDefault(x => x.Id == id);
+
+        public IEnumerable<Restaurant> GetRestaurantsByName(string nameQuery) 
             => Restaurants.Where(x => x.Name.ToLower().Contains(nameQuery.ToLower())).OrderBy(x => x.Name);
     }
 }
