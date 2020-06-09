@@ -19,7 +19,7 @@ namespace VP.OdeToFood.Pages.Restaurants
         #endregion
 
         #region Bound Properties
-        [BindProperty]
+        [BindProperty] //model binding
         public Restaurant Restaurant { get; set; }
         #endregion
 
@@ -42,8 +42,18 @@ namespace VP.OdeToFood.Pages.Restaurants
 
         public IActionResult OnPost()
         {
-            Restaurant = _restaurantData.UpdateRestaurant(Restaurant);
-            _restaurantData.Commit();
+            //if we want to check specific properties
+            //ModelState["Location"].AttemptedValue;
+            //ModelState["Location"].Errors;
+
+            //a general check
+            if (ModelState.IsValid) //are all valid checks passed in the model
+            {
+                _restaurantData.UpdateRestaurant(Restaurant);
+                _restaurantData.Commit();
+            }
+
+            Cuisines = _htmlHelper.GetEnumSelectList<CuisineType>();
             return Page();
         }
     }
