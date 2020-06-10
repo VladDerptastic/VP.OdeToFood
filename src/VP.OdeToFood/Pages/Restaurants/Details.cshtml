@@ -16,6 +16,10 @@
 <div>
     Cuisine: @Model.Restaurant.Cuisine
 </div>
+@if (Model.RedirectMessage != null)
+{
+    <div class="alert alert-info">@Model.RedirectMessage</div>
+}
 <a asp-page="./List" class="btn btn-light">
     <i class="far fa-arrow-alt-circle-left"></i>
 </a>

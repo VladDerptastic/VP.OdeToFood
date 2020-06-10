@@ -13,6 +13,8 @@ namespace VP.OdeToFood.Pages.Restaurants
 
         #region Properties
         public Restaurant Restaurant { get; set; }
+        [TempData]
+        public string RedirectMessage { get; set; }
         #endregion
 
         public DetailsModel(IRestaurantData restaurantData)

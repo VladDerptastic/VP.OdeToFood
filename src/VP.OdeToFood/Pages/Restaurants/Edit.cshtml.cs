@@ -29,13 +29,17 @@ namespace VP.OdeToFood.Pages.Restaurants
             _htmlHelper = htmlHelper;
         }
 
-        public IActionResult OnGet(int restaurantId)
+        public IActionResult OnGet(int? restaurantId)
         {
-            Restaurant = _restaurantData.GetRestaurantById(restaurantId);
+            //Are we coming from the edit or from the add button (add has no Id)
+            if (restaurantId.HasValue)
+                Restaurant = _restaurantData.GetRestaurantById(restaurantId.Value);
+            else
+                Restaurant = new Restaurant();
+
             if (Restaurant == null)
-            {
                 return RedirectToPage("./NotFound");
-            }
+
             Cuisines = _htmlHelper.GetEnumSelectList<CuisineType>();
             return Page();
         }
@@ -47,14 +51,28 @@ namespace VP.OdeToFood.Pages.Restaurants
             //ModelState["Location"].Errors;
 
             //a general check
-            if (ModelState.IsValid) //are all valid checks passed in the model
+            if (!ModelState.IsValid) //are all valid checks passed in the model
             {
-                _restaurantData.UpdateRestaurant(Restaurant);
-                _restaurantData.Commit();
+                Cuisines = _htmlHelper.GetEnumSelectList<CuisineType>();
+                return Page();
             }
 
-            Cuisines = _htmlHelper.GetEnumSelectList<CuisineType>();
-            return Page();
+            //id would be null if we're coming from the Add redirect
+            if (Restaurant.Id > 0)
+            {
+                TempData["RedirectMessage"] = "Restaurant changes saved!";
+                _restaurantData.UpdateRestaurant(Restaurant);
+            }
+            else
+            {
+                TempData["RedirectMessage"] = "Restaurant added and saved!";
+                _restaurantData.AddRestaurant(Restaurant);
+            }
+
+            _restaurantData.Commit();
+            //POST rediret GIT => PRG pattern
+            return RedirectToPage("./Details", new { restaurantId = Restaurant.Id});
+
         }
     }
 }

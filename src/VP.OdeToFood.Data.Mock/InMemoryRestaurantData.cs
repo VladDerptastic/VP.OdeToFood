@@ -28,6 +28,13 @@ namespace VP.OdeToFood.Data.Mock
         public IEnumerable<Restaurant> GetRestaurantsByName(string nameQuery) 
             => Restaurants.Where(x => x.Name.ToLower().Contains(nameQuery.ToLower())).OrderBy(x => x.Name);
 
+        public Restaurant AddRestaurant(Restaurant newRestaurant)
+        {
+            Restaurants.Add(newRestaurant);
+            newRestaurant.Id = Restaurants.Max(x => x.Id) + 1;
+            return newRestaurant;
+        }
+
         public Restaurant UpdateRestaurant(Restaurant updatedObject)
         {
             var restaurant = Restaurants.SingleOrDefault(x => x.Id == updatedObject.Id);
