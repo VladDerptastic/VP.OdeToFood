@@ -24,7 +24,9 @@ namespace VP.OdeToFood
             services.AddRazorPages();
 
             //register dependency injection
-            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            //AddScoped => An instance per HTTP request (as per instruction), allows the DbContext to reconsile its changes on every request
+            services.AddScoped<IRestaurantData, SqlServerRetaurantData>(); 
 
             //register Db context
             services.AddDbContextPool<OdeToFoodDbContext>(options =>

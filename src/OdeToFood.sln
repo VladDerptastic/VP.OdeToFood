@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VP.OdeToFood", "VP.OdeToFood\VP.OdeToFood.csproj", "{3AF5D036-BAEB-4F9D-A8DA-EAD15A8CC821}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VP.OdeToFood", "VP.OdeToFood\VP.OdeToFood.csproj", "{3AF5D036-BAEB-4F9D-A8DA-EAD15A8CC821}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VP.OdeToFood.Definition", "VP.OdeToFood.Definition\VP.OdeToFood.Definition.csproj", "{2ADCF76C-D218-4664-83A6-D4CAB2B4A06F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VP.OdeToFood.Definition", "VP.OdeToFood.Definition\VP.OdeToFood.Definition.csproj", "{2ADCF76C-D218-4664-83A6-D4CAB2B4A06F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VP.OdeToFood.Data", "VP.OdeToFood.Data\VP.OdeToFood.Data.csproj", "{41BA45CE-7BFD-4365-AFFC-AD19CDA3653D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VP.OdeToFood.Data", "VP.OdeToFood.Data\VP.OdeToFood.Data.csproj", "{41BA45CE-7BFD-4365-AFFC-AD19CDA3653D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VP.OdeToFood.Data.Mock", "VP.OdeToFood.Data.Mock\VP.OdeToFood.Data.Mock.csproj", "{FF270395-FF45-4AB7-A8E2-266F98A8F6B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VP.OdeToFood.Data.Mock", "VP.OdeToFood.Data.Mock\VP.OdeToFood.Data.Mock.csproj", "{FF270395-FF45-4AB7-A8E2-266F98A8F6B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{8AAE9AB9-0F1E-430C-99E6-6C80A059E95D}"
+	ProjectSection(SolutionItems) = preProject
+		EFCore.CLI.Cheatsheet.md = EFCore.CLI.Cheatsheet.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
