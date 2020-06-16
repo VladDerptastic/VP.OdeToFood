@@ -4,6 +4,9 @@ using VP.OdeToFood.Definition;
 
 namespace VP.OdeToFood.Data.Mock
 {
+    /// <summary>
+    /// In-memory implementation of IRestaurantData for local/UI testing purposes if needed.
+    /// </summary>
     public class InMemoryRestaurantData : IRestaurantData
     {
         private List<Restaurant> Restaurants =
@@ -34,6 +37,9 @@ namespace VP.OdeToFood.Data.Mock
             newRestaurant.Id = Restaurants.Max(x => x.Id) + 1;
             return newRestaurant;
         }
+
+        public bool DeleteRestaurant(int id)
+            => Restaurants.RemoveAll(x => x.Id == id) > 0;
 
         public Restaurant UpdateRestaurant(Restaurant updatedObject)
         {

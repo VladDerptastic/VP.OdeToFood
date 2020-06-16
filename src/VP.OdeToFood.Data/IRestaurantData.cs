@@ -10,6 +10,7 @@ namespace VP.OdeToFood.Data
         Restaurant GetRestaurantById(int id);
         Restaurant AddRestaurant(Restaurant newRestaurant);
         Restaurant UpdateRestaurant(Restaurant updatedObject);
+        bool DeleteRestaurant(int id);
         int Commit();
     }
 }
