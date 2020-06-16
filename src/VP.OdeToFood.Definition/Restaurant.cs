@@ -2,7 +2,7 @@
 
 namespace VP.OdeToFood.Definition
 {
-    public class Restaurant //: IValidatableObject - Another possibility
+    public class Restaurant //: IValidatableObject - Another possibility over the Attributes
     {
         public int Id { get; set; }
         [Required, StringLength(80)]

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,7 +22,16 @@ namespace VP.OdeToFood
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            //register dependency injection
             services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+
+            //register Db context
+            services.AddDbContextPool<OdeToFoodDbContext>(options =>
+            {
+                //register db provider
+                options.UseSqlServer(Configuration.GetConnectionString("LocalDb"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
