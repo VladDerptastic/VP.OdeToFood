@@ -38,8 +38,17 @@ namespace VP.OdeToFood.Data.Mock
             return newRestaurant;
         }
 
-        public bool DeleteRestaurant(int id)
-            => Restaurants.RemoveAll(x => x.Id == id) > 0;
+        public bool DeleteRestaurant(int id, out Restaurant restaurant)
+        {
+            var restaurantToDel = GetRestaurantById(id);
+            if (restaurantToDel != null)
+            {
+                restaurant = restaurantToDel;
+                return Restaurants.Remove(restaurantToDel);
+            }
+            restaurant = null;
+            return false;
+        }
 
         public Restaurant UpdateRestaurant(Restaurant updatedObject)
         {
@@ -52,5 +61,6 @@ namespace VP.OdeToFood.Data.Mock
             }
             return restaurant;
         }
+
     }
 }

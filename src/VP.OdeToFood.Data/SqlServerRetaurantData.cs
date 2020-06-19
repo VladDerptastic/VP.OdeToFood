@@ -24,14 +24,16 @@ namespace VP.OdeToFood.Data
         public int Commit()
             => db.SaveChanges();
 
-        public bool DeleteRestaurant(int id)
+        public bool DeleteRestaurant(int id, out Restaurant restaurant)
         {
-            var restaraunt = GetRestaurantById(id);
-            if (restaraunt != null)
+            var restarauntToDel = GetRestaurantById(id);
+            if (restarauntToDel != null)
             {
-                db.Restaurants.Remove(restaraunt);
+                db.Restaurants.Remove(restarauntToDel);
+                restaurant = restarauntToDel;
                 return true;
             }
+            restaurant = null;
             return false;
         }
 
