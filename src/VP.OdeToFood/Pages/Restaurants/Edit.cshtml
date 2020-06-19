@@ -24,18 +24,18 @@
         <select class="form-control" asp-for="Restaurant.Cuisine" asp-items="@Model.Cuisines"></select>
     </div>
     <div class="input-group-append">
-        <button class="btn btn-success" type="submit">
+        <button style="margin-right:5px" class="btn btn-success" type="submit">
             <i class="fas fa-save"></i>
             Save
         </button>
-        <a class="btn btn-warning" type="reset" asp-page="./List">
+        <a style="margin-right:5px" class="btn btn-warning" type="reset" asp-page="./List">
             <i class="fas fa-window-close"></i>
             Cancel
         </a>
-        <button class="btn btn-danger" type="button">
+        <a style="margin-right:5px" class="btn btn-danger" type="reset" asp-page="./Delete" asp-route-restaurantId="@Model.Restaurant.Id">
             <i class="fas fa-trash-alt"></i>
             Delete
-        </button>
+        </a>
     </div>
 </form>
 
