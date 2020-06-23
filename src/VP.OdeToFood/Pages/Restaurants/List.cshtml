@@ -10,7 +10,7 @@
 <form method="get">
     <div class="form-group">
         <div class="input-group mb-3">
-            <input class="form-control" type="search" asp-for="SearchQuery" placeholder="Search restaurants by name"/>
+            <input class="form-control" type="search" asp-for="SearchQuery" placeholder="Search restaurants by name" />
             <div class="input-group-append">
                 <button class="btn btn-success" type="submit">
                     <i class="fas fa-search"></i>
@@ -21,7 +21,13 @@
     </div>
 </form>
 
-<table class="table">
+@foreach (var restaurant in Model.Restaurants)
+{
+    <partial name="_Summary" model="restaurant"/>
+    <br />
+}
+
+@*<table class="table">
     <tr>
         <th>Name</th>
         <th>Location</th>
@@ -36,7 +42,7 @@
             <td>@restaurant.Cuisine</td>
             <td>
                 <a class="btn btn-lg" asp-page="./Details" asp-route-restaurantId="@restaurant.Id">
-                    @*<a class="btn btn-lg" href="/Restaurants/Details?restaurantId=@restaurant.Id">*@
+
                     <i class="fas fa-info-circle"></i>
                 </a>
                 <a class="btn btn-lg" asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
@@ -48,7 +54,7 @@
             </td>
         </tr>
     }
-</table>
+</table>*@
 
 <a asp-page="./Edit" class="btn btn-primary"> Add new </a>
 
@@ -56,4 +62,4 @@
     <p>@Model.Message</p>
 }
 
-
+@*<a class="btn btn-lg" href="/Restaurants/Details?restaurantId=@restaurant.Id">*@ @*the pure HTML way of navigating without a tag helper*@
