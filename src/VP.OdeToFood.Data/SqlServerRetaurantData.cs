@@ -43,6 +43,9 @@ namespace VP.OdeToFood.Data
         public Restaurant GetRestaurantById(int id) 
             => db.Restaurants.Find(id);
 
+        public int GetRestaurantCount()
+            => db.Restaurants.Count();
+
         public IEnumerable<Restaurant> GetRestaurantsByName(string nameQuery) 
             => db.Restaurants.Where(x => x.Name.Contains(nameQuery) || string.IsNullOrEmpty(nameQuery)).OrderBy(x => x.Name);
 

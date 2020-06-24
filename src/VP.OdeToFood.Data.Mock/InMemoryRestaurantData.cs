@@ -62,5 +62,7 @@ namespace VP.OdeToFood.Data.Mock
             return restaurant;
         }
 
+        public int GetRestaurantCount()
+            => Restaurants.Count;
     }
 }
