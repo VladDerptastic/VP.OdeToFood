@@ -23,4 +23,8 @@
     <ProjectReference Include="..\VP.OdeToFood.Data\VP.OdeToFood.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
