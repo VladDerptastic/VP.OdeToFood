@@ -22,7 +22,8 @@ namespace VP.OdeToFood
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-
+            //register controllers if you want to use them (.NET Core 3.0+ thing)
+            services.AddControllers();
             //register dependency injection
             //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
             //AddScoped => An instance per HTTP request (as per instruction), allows the DbContext to reconsile its changes on every request
@@ -60,6 +61,8 @@ namespace VP.OdeToFood
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                //register controllers if you want to use them (.NET Core 3.0+ thing)
+                endpoints.MapControllers();
             });
         }
     }
