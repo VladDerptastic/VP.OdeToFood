@@ -5,15 +5,50 @@
 }
 
 <h1>Client Restaurants</h1>
+<table class="table" id="restaurants"></table>
+
 
 @section Scripts {
+    <link rel="stylesheet" type="text/css" href="~/DataTables/datatables.min.css" />
+    <script type="text/javascript" src="~/DataTables/datatables.min.js"></script>
+
     <script>
         $(function () {
             $.ajax("/api/restaurants/", { method: "get" })
-            .then(function (response) {
-                console.dir(response);
-            });
+                .then(function (response) {
+                    $("#restaurants").DataTable({
+                        data: response,
+                        columns: [
+                            { "data": "name" },
+                            { "data": "location" },
+                            { "data": "cuisine" }
+                        ]
+                    });
+                });
         });
+
+        //more readable alternative way to get the same result + debuggning capabilities
+        //$("#restaurants").DataTable({
+        //    ajax: {
+        //        type: "GET",
+        //        url: "/api/restaurants",
+        //        dataType: "json",
+        //        contentType: "application/json; charset=utf-8",
+        //        data: function (data) {
+        //            return data = JSON.stringify(data);
+        //        },
+        //        dataSrc: "",
+        //        error: function (jqXHR, textStatus, errorThrown) {
+        //            debugger; alert("ajax error: " + textStatus);
+        //        }
+        //    },
+        //    //data: response,
+        //    columns: [
+        //        { "data": "name" },
+        //        { "data": "location" },
+        //        { "data": "cuisine" }
+        //    ]
+        //});
     </script>
 }
 
