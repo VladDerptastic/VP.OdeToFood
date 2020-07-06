@@ -35,7 +35,7 @@ namespace VP.OdeToFood.Pages.Restaurants
 
         public void OnGet()
         {
-            //var query = HttpContext.Request.Query["searchQuery"];
+            //var query = HttpContext.Request.Query["searchQuery"]; => Another way to get the data from the querry that led to this page
             Message = _config["Message"];
 
             if (string.IsNullOrEmpty(SearchQuery) == false)

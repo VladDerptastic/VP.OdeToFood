@@ -52,7 +52,6 @@ namespace VP.OdeToFood
                 app.UseHsts();
             }
 
-
             app.Use(SayHelloMiddleware);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
