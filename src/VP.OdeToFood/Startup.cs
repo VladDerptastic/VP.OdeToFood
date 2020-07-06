@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using VP.OdeToFood.Data;
-using VP.OdeToFood.Data.Mock;
 
 namespace VP.OdeToFood
 {
@@ -22,7 +23,7 @@ namespace VP.OdeToFood
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            //register controllers if you want to use them (.NET Core 3.0+ thing)
+            //register controllers if you want to use them (VP: .NET Core 3.0+ thing)
             services.AddControllers();
             //register dependency injection
             //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
@@ -51,6 +52,8 @@ namespace VP.OdeToFood
                 app.UseHsts();
             }
 
+
+            app.Use(SayHelloMiddleware);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -61,9 +64,25 @@ namespace VP.OdeToFood
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                //register controllers if you want to use them (.NET Core 3.0+ thing)
+                //register controllers if you want to use them (VP: .NET Core 3.0+ thing)
                 endpoints.MapControllers();
             });
+        }
+
+        private RequestDelegate SayHelloMiddleware(RequestDelegate arg)
+        {
+            return async ctx =>
+            {
+                if (ctx.Request.Path.StartsWithSegments("/middleware"))
+                {
+                    await ctx.Response.WriteAsync("Hello personal middleware!");
+                }
+                else
+                {
+                    //else pass the request allong the pipeline
+                    await arg(ctx);
+                }
+            };
         }
     }
 }
