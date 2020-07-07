@@ -10,3 +10,5 @@
 4. dotnet ef migrations add [name of the migration] -s [start-up project path] => Updates the Entity schema from your changed C# DbContext (can be reverted with `ef migrations remove`)
 
 5. dotnet ef database update -s [start-up project path] -v => Updates the database from the Entity schema (-v for verbosity)
+
+6. dotnet ef migrations script -s [start-up project path] => Generates an SQL script that can recreate my local database schema
